@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TrigerCheck : MonoBehaviour {
+	public Collect _isCollected;
+	public string _NameCube;
+	public AudioCube _ClipSound;
+	/*private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.name == "Win_Piece")
+		{
+			foreach (var block in blocks_rigidbodies)
+			{
+				block.useGravity = true;
+				block.constraints = RigidbodyConstraints.None;
+				door.SetActive (false);
+				Destroy(block.GetComponent<BlockPuzzle>());
+			}
+
+
+		}*/
+    private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.name == _NameCube) {
+			_isCollected.PickedCube = false;
+			_isCollected.counterCorrect ();
+			_ClipSound.DisplayAudioWin ();
+			_isCollected.cubePuzzels [_isCollected.indexin].GetComponent<Rigidbody> ().isKinematic = true;
+		} else {
+			_isCollected.CheckNot();
+			_ClipSound.DisplayAudioWrongn ();
+			_isCollected.cubePuzzels [_isCollected.indexin].GetComponent<Rigidbody> ().isKinematic = false;
+		}
+    }
+}

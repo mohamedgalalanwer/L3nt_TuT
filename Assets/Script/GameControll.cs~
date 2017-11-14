@@ -1,0 +1,18 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameControll : MonoBehaviour {
+    public GameObject _Camera;
+	// Use this for initialization
+    public void GotoSecondGame () {
+        //SceneManager.LoadScene ("SecondGame");
+        _Camera.transform.position = new Vector3 (515, 6, -8f);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}
